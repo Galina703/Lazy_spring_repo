@@ -10,23 +10,22 @@ import pixel.acaademy.setter_injection_app.common.Chef;
 public class DemoController {
 
 
-        private Chef myChef;
-        // constructor
-        @Autowired
+    private Chef myChef;
+
+    // constructor
+    @Autowired
     public DemoController(@Qualifier("frenchChef") Chef theChef) {
-    myChef = theChef;
-        }
 
-    // setter injection
-    // @Autowired
-    // public void setMyChef(Chef theChef){
-       // myChef = theChef;
-    //}
-
-        @GetMapping("/dailyrecipe")
-        public String getDailyRecipe(){
-
-            return myChef.getDailyRecipe();
-        }
-
+        System.out.println("In constructor"+ getClass().getSimpleName());
+        myChef=theChef;
     }
+
+
+
+    @GetMapping("/dailyrecipe")
+    public String getDailyRecipe(){
+
+        return myChef.getDailyRecipe();
+    }
+
+}
